@@ -1,0 +1,27 @@
+﻿@{
+    
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Přihlášení</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form asp-action="Prihlaseni" asp-controller="Uzivatele" method="post" class="form-style">
+        <div class="form-group">
+            <label for="username">Uživatelské jméno:</label>
+            <input type="text" id="username" name="jmeno" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Heslo:</label>
+            <input type="password" id="password" name="heslo" required />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Přihlásit" />
+        </div>
+    </form>
+</body>
+</html>
