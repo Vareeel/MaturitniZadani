@@ -15,13 +15,5 @@ namespace maturitniZadani.Models
 
         [Required]
         public string Heslo_hashed { get; set; } = String.Empty;
-
-
-
-
-
-
-
-
     }
 }

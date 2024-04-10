@@ -1,0 +1,36 @@
+﻿
+
+<div class="text-center">
+    <h1 class="display-4">Přidejte poznámku pro uživatele: @p.HttpContext.Session.GetString("prihlasenyUzivatel")</h1>
+    <p></p>
+</div>
+
+@{
+    if (p.HttpContext.Session.GetString("prihlasenyUzivatel") != null)
+    {
+        <form asp-action="pridat" asp-controller="Poznamky" method="post" class="form-style">
+            <div>
+                <label for="title">Nadpis:</label>
+                <input type="text"  name="title" />
+            </div>
+            <div>
+                <label for="content">Obsah:</label><br />
+                <textarea id="content" name="content" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <label for="date">Čas přidání:</label>
+                <input type="date"  name="CasPridani" />
+            </div>
+            <div>
+                <label for="important">Důležitá:</label>
+                <input type="checkbox"  name="JeDulezita" />
+            </div>
+            <button type="submit">Vytvořit</button>
+        </form>
+                } else {
+                     <h3>přihlaš se</h3>
+    }
+}
+
+
+

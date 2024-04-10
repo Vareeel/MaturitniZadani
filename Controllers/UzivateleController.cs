@@ -44,13 +44,15 @@ namespace maturitniZadani.Controllers
 
 
 
-            if (uzivatelexistuje == null) { 
+            if (uzivatelexistuje == null) {
                 return RedirectToAction("Prihlaseni");
             }
 
+            
+
             if (BCrypt.Net.BCrypt.Verify(heslo, uzivatelexistuje.Heslo_hashed)) {
                 HttpContext.Session.SetString("prihlasenyUzivatel", jmeno);
-                return RedirectToAction("Poznamky", "Poznamky");
+                return RedirectToAction("Pridat", "Poznamky");
             }
 
             return RedirectToAction("Prihlaseni");
@@ -70,6 +72,13 @@ namespace maturitniZadani.Controllers
             UzivateleModel? uzivatelexistuje = databaze.Uzivatele.FirstOrDefault(user => user.Jmeno == jmeno);
 
 
+            if (uzivatelexistuje != null) {
+                return RedirectToAction("Registrace");
+
+            }
+                
+
+
             if (souhlas == true)
             {
                 return RedirectToAction("Prihlaseni");
@@ -86,6 +95,22 @@ namespace maturitniZadani.Controllers
             databaze.SaveChanges();
 
             return RedirectToAction("Prihlaseni");
+        }
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Odhlasit()
+        {
+            if (HttpContext.Session.GetString("prihlasenyUzivatel") != null)
+            {
+                HttpContext.Session.Remove("prihlasenyUzivatel");
+            }
+
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
