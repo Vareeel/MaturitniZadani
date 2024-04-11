@@ -1,5 +1,7 @@
 ﻿using maturitniZadani.Data;
+using maturitniZadani.Models;
 using Microsoft.AspNetCore.Mvc;
+using maturitniZadani.Models;
 
 namespace maturitniZadani.Controllers
 {
@@ -16,20 +18,25 @@ namespace maturitniZadani.Controllers
         [HttpPost]
         public IActionResult pridat(string nadpis, string text, string dulezitost)
         {
+            if (HttpContext.Session.GetString("prihlasenyUzivatel") == null)
+            {
+                return RedirectToAction("Prihlaseni", "Uzivatele");
+            }
 
-            Models.PoznamkyModel nova_poznamka = new Models.PoznamkyModel()
+            PoznamkyModel nova_poznamka = new PoznamkyModel()
             {
                 Nadpis = nadpis,
                 Obsah = text,
                 CasPridani = DateTime.Now,
                 JeDulezita = dulezitost == "on",
-                MajitelId = HttpContext.Session.GetString("jmeno")
+                MajitelId = HttpContext.Session.GetString("prihlasenyUzivatel")
 
             };
             databaze.Add(nova_poznamka);
             databaze.SaveChanges();
 
-            return RedirectToAction("Poznamky");
+            return RedirectToAction("Vypis");
+
         }
         
        
@@ -37,6 +44,19 @@ namespace maturitniZadani.Controllers
         public IActionResult Pridat()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Vypis()
+        {
+            if (HttpContext.Session.GetString("prihlasenyUzivatel") == null)
+            {
+                return RedirectToAction("Prihlaseni", "Uzivatele");
+            }
+
+            string jmeno = HttpContext.Session.GetString("prihlasenyUzivatel");
+            List<PoznamkyModel> poznamky = databaze.Poznamky.Where(n => n.MajitelId == jmeno).ToList().OrderBy(o => o.CasPridani).ToList();
+            return View(poznamky);
         }
 
 

@@ -4,9 +4,6 @@ using System.ComponentModel.DataAnnotations;
 namespace maturitniZadani.Models
 {
     public class PoznamkyModel
-
-
-         
     {
 
 
@@ -21,7 +18,6 @@ namespace maturitniZadani.Models
 
         [Required]
         public string Obsah { get; set; } = String.Empty;
-
 
         [Required]
         public DateTime CasPridani { get; set; } = DateTime.Now;

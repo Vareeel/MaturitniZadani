@@ -23,9 +23,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Domů</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Poznamky" asp-action="Poznamky">Poznámky</a>
-                        </li>
+                        @{
+
+                            if (p.HttpContext.Session.GetString("prihlasenyUzivatel") != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Poznamky" asp-action="Vypis">Poznámky</a>
+                                </li>
+                            }
+                        }
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Uzivatele" asp-action="Prihlaseni">Přihlášení</a>
                         </li>
@@ -52,8 +59,8 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - maturitniZadani - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div style="text-align:center" class="container">
+            &copy; 2024 - maturitniZadani 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,4 +1,20 @@
 ﻿<div class="text-center">
     <h1 class="display-4">Ponámky uživatele: @p.HttpContext.Session.GetString("prihlasenyUzivatel")</h1>
-    <p></p>
+</div>
+@model List<PoznamkyModel>;
+
+
+<div>
+    @{
+        foreach (PoznamkyModel poznamka in Model.ToList())
+        { 
+            <h1>@poznamka.Nadpis</h1>
+            <article>@poznamka.Obsah</article>
+            <article>@poznamka.JeDulezita</article>
+            <article>@poznamka.CasPridani</article>
+            
+        }
+
+
+    }
 </div>
