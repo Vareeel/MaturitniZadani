@@ -31,6 +31,14 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Poznamky" asp-action="Vypis">Poznámky</a>
                                 </li>
                             }
+
+
+                            if (p.HttpContext.Session.GetString("prihlasenyUzivatel") != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Poznamky" asp-action="Pridat">Nová poznámka</a>
+                                </li>
+                            }
                         }
                         
                         <li class="nav-item">
@@ -58,8 +66,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div style="text-align:center" class="container">
+    <footer class="footer">
+        <div>
             &copy; 2024 - maturitniZadani 
         </div>
     </footer>

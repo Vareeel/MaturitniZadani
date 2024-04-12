@@ -4,17 +4,16 @@
 @model List<PoznamkyModel>;
 
 
-<div>
-    @{
-        foreach (PoznamkyModel poznamka in Model.ToList())
-        { 
+
+@{
+    @foreach (PoznamkyModel poznamka in Model.ToList())
+    {
+        <div class="poznamka">
             <h1>@poznamka.Nadpis</h1>
             <article>@poznamka.Obsah</article>
             <article>@poznamka.JeDulezita</article>
             <article>@poznamka.CasPridani</article>
-            
-        }
-
-
+        </div>
     }
-</div>
+        
+}

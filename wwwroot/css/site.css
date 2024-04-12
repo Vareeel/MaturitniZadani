@@ -50,3 +50,44 @@
 .checkbox input[type="checkbox"] {
     margin-right: 5px;
 }
+
+
+
+/* CSS for the div with class "poznamka" */
+div.poznamka {
+    background-color: #ff8c00; /* Orandžová barva */
+    padding: 20px; /* Vn?jší okraj obsahu */
+    margin-bottom: 20px; /* Vzdálenost mezi jednotlivými poznámkami */
+    border-radius: 10px; /* Zaoblení roh? */
+    border: 2px solid #000; /* ?erný rámec */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Stín pro efekt hloubky */
+}
+
+    /* CSS for the h1 element inside the div with class "poznamka" */
+    div.poznamka h1 {
+        text-align: center; /* Zarovnání textu na st?ed */
+        font-size: 35px; /* Velikost písma nadpisu */
+        font-weight: bold; /* Tu?né písmo */
+        color: #333; /* ?erná barva textu */
+    }
+
+    /* CSS for the article elements inside the div with class "poznamka" */
+    div.poznamka article {
+        font-size: 16px; /* Velikost písma obsahu */
+        line-height: 1.5; /* ?ádkování */
+        color: #fff; /* Bílá barva textu */
+        word-wrap: break-word; /* Zalomování slov */
+    }
+
+footer {
+    background-color: #ff0000; /* Barva pozadí pro footer */
+    color: #fff; /* Barva textu */
+    padding: 20px; /* Odsazení kolem obsahu */
+    text-align: center; /* Zarovnat obsah na st?ed */
+    width: 100%; /* Ší?ka footeru na 100% stránky */
+    position: absolute; /* Pevná pozice na obrazovce */
+    bottom: 0; /* Umístit do dolní ?ásti obrazovky */
+    z-index: 999; /* P?esunout nad ostatní obsah */
+    margin-top: auto;
+}
+

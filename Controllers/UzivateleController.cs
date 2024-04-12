@@ -52,7 +52,7 @@ namespace maturitniZadani.Controllers
 
             if (BCrypt.Net.BCrypt.Verify(heslo, uzivatelexistuje.Heslo_hashed)) {
                 HttpContext.Session.SetString("prihlasenyUzivatel", jmeno);
-                return RedirectToAction("Pridat", "Poznamky");
+                return RedirectToAction("Vypis", "Poznamky");
             }
 
             return RedirectToAction("Prihlaseni");

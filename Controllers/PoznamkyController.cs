@@ -55,9 +55,15 @@ namespace maturitniZadani.Controllers
             }
 
             string jmeno = HttpContext.Session.GetString("prihlasenyUzivatel");
-            List<PoznamkyModel> poznamky = databaze.Poznamky.Where(n => n.MajitelId == jmeno).ToList().OrderBy(o => o.CasPridani).ToList();
+            List<PoznamkyModel> poznamky = databaze.Poznamky.Where(n => n.MajitelId == jmeno).ToList().OrderBy(o => o.CasPridani).Reverse().ToList();
             return View(poznamky);
         }
+
+
+
+
+        
+
 
 
     }
